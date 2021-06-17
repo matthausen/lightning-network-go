@@ -20,11 +20,13 @@ touch "/Users/${USER}/Library/Application Support/Bitcoin/bitcoin.conf"
 chmod 600 "/Users/${USER}/Library/Application Support/Bitcoin/bitcoin.conf
 ```
 with the following content:
+
 ```
-rpcuser=bitcoinrpc
-rpcpassword=some_password_goes_here
+rpcuser=lnd-user
+rpcpassword=lnd-password
+mainnet=1
 testnet=0
-regtest=1
+regtest=0
 server=1
 daemon=1
 zmqpubrawblock=tcp://127.0.0.1:28332
@@ -45,12 +47,23 @@ touch "/Users/${USER}/Library/Application Support/Lnd/Lnd.conf"
 chmod 600 "/Users/${USER}/Library/Application Support/Lnd/Lnd.conf
 ```
 
-wi the following content: 
+with the following content: 
 ```
-bitcoin.regtest=1
-bitcoin.active=1
+ ## LND Settings
+# Lets LND know to run on top of Bitcoin (as opposed to Litecoin)
+bitcoin.active=true
+bitcoin.mainnet=true
+# Lets LND know you are running Bitcoin Core (not btcd or Neutrino)
 bitcoin.node=bitcoind
-debuglevel=debug
+
+
+## Bitcoind Settings
+# Tells LND what User/Pass to use to RPC to the Bitcoin node
+bitcoind.rpcuser=lnd-user
+bitcoind.rpcpass=lnd-password
+# Allows LND & Bitcoin Core to communicate via ZeroMQ
+bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
+bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
 ```
 
 Add these aliases to you ~/.bash_profile or ~/.zshrc:
@@ -65,22 +78,29 @@ alias lncli=$HOME/go/bin/lncli
 
 ## How to run
 
-Run lnd fior the first time and create a wallet:
+Run lnd for the first time and create a wallet:
 
 - `lnd`
 - `lncli create`
 
-To run and stop bitcoind:
+To run and bitcoind:
 
 - `bitcoind`
-- `bitcoin-cli stop`
 
 Run lnd for a second time and unlock the previously created wallet with your password:
 
 - `lnd`
 - `lncli unlock`
 
-To stop lncli:
+
+## How to stop
+
+Stop bitcoind
+
+- `bitcoin-cli stop`
+
+Stop lncli:
 
 - `lncli stop`
+
 
