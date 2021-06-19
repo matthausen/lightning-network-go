@@ -5,6 +5,8 @@ You have to run the Bitcoin Core Daemon (bitcoind) in order for lnd to perform i
 More methods and functionalities available from the LND client here: 
 https://pkg.go.dev/github.com/lightningnetwork/lnd/lnrpc?utm_source=godoc#LightningClient
 
+More info how to create a gRPC server to connect to lnd: https://pypi.org/project/lnd-rpc/
+
 ## Initial configuration
 
 Install Go:

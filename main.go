@@ -16,6 +16,9 @@ import (
 	"gopkg.in/macaroon.v2"
 )
 
+//TODO: add docker image for bitcoind client
+//TODO: add docker image for lightning network cli (lncli)
+
 type rpcCreds map[string]string
 
 func (m rpcCreds) GetRequestMetadata(_ context.Context, _ ...string) (map[string]string, error) {
