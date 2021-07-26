@@ -43,13 +43,13 @@ func main() {
 	}
 	fmt.Println(walletRes.Balance)
 
-	newAddressRequest := lnrpc.NewAddressRequest{Type: 0}
+	/*newAddressRequest := lnrpc.NewAddressRequest{Type: 0}
 	newAddrRes, err := lncli.NewAddress(ctx, &newAddressRequest, MACAROONOPTION)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Println(newAddrRes.Address)
+	fmt.Println(newAddrRes.Address)*/
 
 }
 

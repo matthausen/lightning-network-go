@@ -57,6 +57,8 @@ bitcoin.active=true
 bitcoin.mainnet=true
 # Lets LND know you are running Bitcoin Core (not btcd or Neutrino)
 bitcoin.node=bitcoind
+# Lets lnd unlock the wallet without manual input
+wallet-unlock-password-file=/some/safe/location/password.txt
 
 
 ## Bitcoind Settings
@@ -79,24 +81,19 @@ alias lncli=$HOME/go/bin/lncli
 
 
 ## How to run
-
-Run lnd for the first time and create a wallet:
-
-- `lnd`
-- `lncli create`
-
-To run and bitcoind:
-
+Run and bitcoind node:
 - `bitcoind`
 
-Run lnd for a second time and unlock the previously created wallet with your password:
-
+Run lnd:
 - `lnd`
+  
+Create a lnd wallet:
+- `lncli create`
+  
+Unlock the wallet - if not automatically unlocked by the lnd.config file
 - `lncli unlock`
 
-
 ## How to stop
-
 Stop bitcoind
 
 - `bitcoin-cli stop`
