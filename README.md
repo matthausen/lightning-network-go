@@ -1,4 +1,4 @@
-This is a go gRPC server which shows how you can create a wallet via the Lightning Network (LND) and display its balance.
+This is a go gRPC server which shows how to create a wallet via the Lightning Network (LND) and display its balance.
 
 You have to run the Bitcoin Core Daemon (bitcoind) in order for lnd to perform its actions.
 
